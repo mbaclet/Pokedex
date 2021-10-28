@@ -1,0 +1,33 @@
+body{
+  background-color: #af1d1d;
+}
+
+nav{
+  div{
+    a.btn{
+      background-color: #ffffff;
+      border: solid 2px black;
+    }
+  }
+}
+
+h1{
+  display: flex;
+  justify-content: center;
+  color: #ffffff;
+  p{
+    border: solid 2px #ffffff;
+    border-radius: 5px;
+    padding: 0.2em;
+  }
+}
+
+.card{
+  border: solid 2px #000000;
+  text-align: center;
+  text-transform: capitalize;
+  .btn{
+    background-color: #af1d1d;
+    color: #ffffff;
+  }
+}

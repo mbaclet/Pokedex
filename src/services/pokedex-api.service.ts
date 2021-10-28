@@ -1,31 +1,24 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {from, Observable} from "rxjs";
-import {Pokemon} from "../models/pokemon";
+import {Observable} from "rxjs";
+import {PokemonList} from "../models/pokemonList";
+import {PokemonDetails} from "../models/pokemonDetails";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PokedexApiService {
-  private pokeListInternal: Array<Pokemon>|null = null;
-
+  arrayPokemon:Array<PokemonDetails> = new Array<PokemonDetails>();
 
   constructor(
     private httpClient: HttpClient,
-  ) {
+  ) {}
+
+  public get pokemonList(): Observable<PokemonList>{
+    return this.httpClient.get<PokemonList>('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0');
   }
 
-  public get pokeList(): Observable<Array<Pokemon>> {
-    if (this.pokeListInternal === null) {
-      return this.httpClient.get<Array<Pokemon>>('https://pokeapi.co/api/v2/pokemon/');
-    }
-
-    return from([]);
-  }
-
-  public createTodo(todo: Pokemon): void {
-      this.pokeList.subscribe((data) => {
-        console.log(data);
-      });
+  public getPokemonDetails(name: string){
+    return this.httpClient.get('https://pokeapi.co/api/v2/pokemon/'+name);
   }
 }

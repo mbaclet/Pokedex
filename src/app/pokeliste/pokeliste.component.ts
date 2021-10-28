@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PokedexApiService} from "../../services/pokedex-api.service";
-import {Pokemon} from "../../models/pokemon";
+import {PokemonLite} from "../../models/pokemonLite";
+import {PokemonList} from "../../models/pokemonList";
 
 @Component({
   selector: 'app-pokeliste',
@@ -9,18 +10,23 @@ import {Pokemon} from "../../models/pokemon";
 })
 export class PokelisteComponent implements OnInit {
 
-  public pokeTab:Array<Pokemon> = [];
+  public pokeList: Array<PokemonLite> = [];
 
   constructor(
-    private pokeListeService: PokedexApiService
-  ) {
+    private pokeapiService:PokedexApiService
+  ) { }
 
+  ngOnInit(): void {
+    this.pokeapiService.pokemonList.subscribe((data:PokemonList) =>{
+      this.pokeList = data.results;
+    })
   }
 
-  public ngOnInit(): void {
-    this.pokeListeService.pokeList.subscribe((data: any) => {
-      this.pokeTab = data.results;
-      console.log(this.pokeTab)
-    });
+  public getId(pokemon: PokemonLite): string {
+    const result = pokemon.url.match(/^https:\/\/pokeapi\.co\/api\/v2\/pokemon\/([0-9]+)\/?$/);
+    if(result){
+      return result[1];
+    }
+    return'';
   }
 }

@@ -1,12 +1,12 @@
-<table>
-  <thead>
-  <tr>
-    <th>Name</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let pokemon of pokeTab">
-    <td>{{pokemon.name}}</td>
-  </tr>
-  </tbody>
-</table>
+<div class="row gy-5 gx-5">
+  <div *ngFor="let pokemon of pokeList" class="col-sm-2 col-lg-3">
+    <div class="card">
+      <img class="card-img-top" [src]="'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/'+getId(pokemon)+'.png'" alt="Pokemon">
+      <div class="card-body">
+        <h5 class="card-title">{{pokemon.name}}</h5>
+        <p class="card-text">No. {{getId(pokemon)}}</p>
+        <a routerLink="/description" class="btn">View Pokemon details</a>
+      </div>
+    </div>
+  </div>
+</div>
