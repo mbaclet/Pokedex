@@ -6,7 +6,7 @@ import {NavbarComponent} from "./navbar/navbar.component";
 
 const routes: Routes = [
   {path: '', component: PokelisteComponent},
-  {path: 'description', component: PokeDescriptionComponent},
+  {path: 'description/:id', component: PokeDescriptionComponent},
   {path: 'navbar', component: NavbarComponent}
 ];
 

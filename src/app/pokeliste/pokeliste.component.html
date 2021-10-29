@@ -5,7 +5,7 @@
       <div class="card-body">
         <h5 class="card-title">{{pokemon.name}}</h5>
         <p class="card-text">No. {{getId(pokemon)}}</p>
-        <a routerLink="/description" class="btn">View Pokemon details</a>
+        <a [routerLink]="['description',getId(pokemon)]" class="btn">View Pokemon details</a>
       </div>
     </div>
   </div>

@@ -15,10 +15,10 @@ export class PokedexApiService {
   ) {}
 
   public get pokemonList(): Observable<PokemonList>{
-    return this.httpClient.get<PokemonList>('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0');
+    return this.httpClient.get<PokemonList>('https://pokeapi.co/api/v2/pokemon?limit=11&offset=0');
   }
 
-  public getPokemonDetails(name: string){
-    return this.httpClient.get('https://pokeapi.co/api/v2/pokemon/'+name);
+  public getPokemonDetails(id: string): Observable<PokemonDetails>{
+    return this.httpClient.get<PokemonDetails>('https://pokeapi.co/api/v2/pokemon/'+id);
   }
 }
