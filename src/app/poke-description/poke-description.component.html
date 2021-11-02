@@ -1,13 +1,22 @@
-<div *ngIf="pokemon !== null" class="text-center">
-  <h1>
-    {{pokemon.name}}
-  </h1>
-
-  <ul>
-    <li *ngFor="let type of pokemon.types">
-      {{type.type.name}}
-    </li>
-  </ul>
-
-  <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="{{pokemon.name}}">
+<div *ngIf="pokemon !== null" class="row pokegeneral">
+  <div class="col-6">
+    <div class="text-center poke">
+      <h1>
+        {{pokemon.name}}
+      </h1>
+      <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="{{pokemon.name}}" class="img-fluid">
+    </div>
+  </div>
+  <div class="col-3 pokedescription">
+    <div >
+      <p><b>Taille : </b>{{pokemon.height*0.10 | number: '1.0-1'}}m</p>
+      <p><b>Poids :</b> {{pokemon.weight*0.10 | number:'1.0-1'}}kg</p>
+      <p><b>ID :</b> {{pokemon.order}}</p>
+      <p *ngFor="let type of pokemon.types let i = index"><b>Type {{i+1}}</b>  : {{type.type.name}}</p>
+    </div>
+  </div>
+  <div class="col-3 pokedescription">
+    <p *ngFor="let stat of pokemon.stats"><b>{{stat.stat.name}}</b> : {{stat.base_stat}}</p>
+  </div>
 </div>
+

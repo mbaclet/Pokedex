@@ -10,17 +10,30 @@ nav{
     }
   }
 }
-
-h1{
+.testititre{
   display: flex;
   justify-content: center;
   color: #ffffff;
+  text-transform: capitalize;
   p{
     border: solid 2px #ffffff;
     border-radius: 5px;
     padding: 0.2em;
   }
 }
+
+.pokegeneral{
+  text-transform: capitalize;
+  .poke{
+    border: solid 1px black;
+    background-color: aliceblue;
+    color: #af1d1d;
+  }
+  .pokedescription{
+    color: #ffffff;
+  }
+}
+
 
 .card{
   border: solid 2px #000000;

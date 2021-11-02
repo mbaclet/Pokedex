@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {PokedexApiService} from "../../services/pokedex-api.service";
 import {PokemonDetails} from "../../models/pokemonDetails";
+import {PokemonGernd} from "../../models/pokemonGernd";
 
 @Component({
   selector: 'app-poke-description',
@@ -11,6 +12,7 @@ import {PokemonDetails} from "../../models/pokemonDetails";
 export class PokeDescriptionComponent implements OnInit {
 
   public pokemon: PokemonDetails|null = null;
+  public pokemonGender: PokemonGernd|null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +27,11 @@ export class PokeDescriptionComponent implements OnInit {
           this.pokemon = pokemon;
         });
     });
+    this.route.params.subscribe((params) =>{
+      this.pokeApiService.getPokemonGender(params.id)
+        .subscribe((gender:PokemonGernd) =>{
+          this.pokemonGender = gender;
+        });
+    });
   }
-
 }

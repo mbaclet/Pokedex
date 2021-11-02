@@ -21,4 +21,11 @@ export interface PokemonDetails{
       url: string;
     };
   }>;
+  stats: Array<{
+    base_stat:number;
+    effort:number;
+    stat:{
+      name:string;
+    }
+  }>;
 }
